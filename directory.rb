@@ -22,9 +22,8 @@ def print_header
   puts "-------------"
 end
 def print(students)
-  puts "Names beginning with what letter?"
-  letter = gets.chomp
-  initial = students.select { |student| student[:name].start_with?(letter) }
+  puts "Names less than 12 characters "
+  initial = students.select { |student| student[:name].length < 12 }
   initial.each do |v|
   puts "#{v[:name]}, #{v[:cohort]}"
 end
