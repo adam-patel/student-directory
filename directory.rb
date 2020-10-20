@@ -22,9 +22,12 @@ def print_header
   puts "-------------"
 end
 def print(students)
-  students.each_with_index do |student, index|
-    puts "#{index +1}. #{student[:name]} (#{student[:cohort]} cohort)"
-  end
+  puts "Names beginning with what letter?"
+  letter = gets.chomp
+  initial = students.select { |student| student[:name].start_with?(letter) }
+  initial.each do |v|
+  puts "#{v[:name]}, #{v[:cohort]}"
+end
 end
 def print_footer(names)
   puts "Overall, we have #{names.count} great students"
