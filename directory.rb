@@ -5,13 +5,20 @@ def input_students
   students = []
   # get the first name
   name = gets.chomp
+  puts "Please enter the cohort of the students"
+  # get the cohort
+  cohort = gets.chomp
   # while the name is not empty, repeat this code
   while !name.empty? do
     #add the student hash to the array
-    students << {name: name, cohort: :november}
+    students << {name: name, cohort: cohort}
     puts "Now we have #{students.count} students"
     # get another name from the user
+    puts "enter another name"
     name = gets.chomp
+    # get another cohort
+    puts "and their cohort"
+    cohort = gets.chomp
   end
   #return the array of students
   students
@@ -22,12 +29,14 @@ def print_header
   puts "-------------"
 end
 def print(students)
-  puts "Names less than 12 characters "
-  initial = students.select { |student| student[:name].length < 12 }
-  initial.each do |v|
-  puts "#{v[:name]}, #{v[:cohort]}"
-end
-end
+    count = 0
+    students.each do |student|
+    puts count + 1
+    puts "#{student[:name]} (#{student[:cohort]} cohort)"
+    count = count + 1
+  end
+  end
+
 def print_footer(names)
   puts "Overall, we have #{names.count} great students"
 end
