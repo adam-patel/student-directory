@@ -59,7 +59,7 @@ end
 
 def print_students_by_cohort(students)
   if students.empty?
-    puts "No students available"
+    puts "No students to show"
   else
     cohorts = students.map do |student|
       student[:cohort]
