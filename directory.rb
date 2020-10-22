@@ -57,6 +57,22 @@ def print_list_by_letter(students)
   end
 end
 
+def print_students_by_cohort(students)
+  if students.empty?
+    puts "No students available"
+  else
+    cohorts = students.map do |student|
+      student[:cohort]
+    end
+    cohorts.uniq.each do |cohort|
+      puts "#{cohort} cohort".upcase
+        students.each do |student|
+          puts student[:name] if student[:cohort] == cohort
+        end
+    end
+  end
+end
+
 def print_footer(names)
   puts "Overall, we have #{names.count} great students"
 end
@@ -67,6 +83,7 @@ def interactive_menu
     puts "1. Input the students"
     puts "2. Show the students"
     puts "3. Show students by initial"
+    puts "4. Show students by cohort"
     puts "9. Exit"
 
     selection = gets.chomp
@@ -79,6 +96,8 @@ def interactive_menu
       print_footer(students)
     when "3"
       print_list_by_letter(students)
+    when "4"
+      print_students_by_cohort(students)
     when "9"
       exit
     else
@@ -93,4 +112,5 @@ students = input_students
 print_header
 print(students)
 print_list_by_letter(students)
+print_students_by_cohort(students)
 print_footer(students)
